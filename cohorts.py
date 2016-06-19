@@ -1,6 +1,5 @@
 import os
-from flask import Flask
-from flask import request
+from flask import Flask, render_template, request
 import json
 import urllib
 import urllib2
@@ -19,7 +18,7 @@ def hello_world():
 @app.route('/data', methods=['POST', 'GET'])
 def parse_data():
 	if request.method == "GET":
-		return "hi there! try POSTing instead."
+		return render_template('cohorts.html', name=name)
 	params = request.args
 	Cohort_Name, Token = urllib.unquote_plus(params['cohort']), params['token']
 	userData = (json.loads(request.form.get('users')))
