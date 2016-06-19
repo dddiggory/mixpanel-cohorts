@@ -16,9 +16,10 @@ def hello_world():
 	return "Mixpanel Cohorts!"
 
 
-@app.route('/data', methods=['POST'])
+@app.route('/data', methods=['POST', 'GET'])
 def parse_data():
-
+	if request.method == "GET":
+		return "hi there! try POSTing instead."
 	params = request.args
 	Cohort_Name, Token = urllib.unquote_plus(params['cohort']), params['token']
 	userData = (json.loads(request.form.get('users')))
