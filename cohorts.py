@@ -9,16 +9,15 @@ import base64
 app = Flask(__name__)
 
 #http://755b3eae.ngrok.io/data?cohort=Highly+Engaged+Females&token=12345678
-
 @app.route('/')
 def hello_world():
 	return "Mixpanel Cohorts!"
 
 
-@app.route('/data', methods=['POST', 'GET'])
+@app.route('/cohorts', methods=['POST', 'GET'])
 def parse_data():
 	if request.method == "GET":
-		return render_template('cohorts.html', name=name)
+		return render_template('cohorts.html')
 	params = request.args
 	Cohort_Name, Token = urllib.unquote_plus(params['cohort']), params['token']
 	userData = (json.loads(request.form.get('users')))
