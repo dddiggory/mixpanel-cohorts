@@ -85,9 +85,18 @@
         <p class="lead">
         This is a free, unofficial service for easily converting a filtered set of Mixpanel user profiles, like this:
         <br><em><small>image coming soon</small></em><br>... into a saved ad hoc cohort, accessible in both your Engagement reports (e.g., Segmentation, Funnels, Retention) and for easy Notification targeting (i.e., saving a complex set of filters and using them for many different Notifications).
-        <br><br>To use it, we'll simply set up a Webhook notification in Mixpanel. <br>This tool supports both one-time groupings from the Explore tab and recurring checks via the Notifications tab.
+        <br><br>This tool supports both one-time groupings from the Explore tab and recurring checks via the Notifications tab. Note that while Webhooks are categorized as Notifications in Mixpanel, they do not trigger any communications to users themselves. This tool will not communicate with your users, and will not store your user data.
 
-
+        <br>  
+        <h3>Where can I find my project token & is it safe to share?</h3>
+        <p class="lead">
+        <a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">Here's how to find your project token.</a>
+        This service will not store your Project Token; it is discarded after use. Note that your Token is used for event tracking and is intended to be public, whereas your API Key & API Secret provide data <em>access</em> and should generally not be shared outside of your organization. <a href="https://mixpanel.com/help/questions/articles/what-is-the-difference-between-my-token-key-and-secret">Click here for additional guidance.</a>
+        </p>
+        
+        <h3>Sample Mixpanel Project</h3>
+        <p class="lead">
+        Want to try this out on a group of fake users? <br><a href="http://www.mixpanel.com">Log into Mixpanel</a> with email address "sandbox@cohort.biz" and password "TESTER", <br>and try it on the "Cohort Sandbox" project.</p>
         <!-- <p class="lead" id="url-example">https://mixpanel-cohorts.herokuapp.com/cohorts?cohort=<strong>Cohort+Name</strong>&token=<strong>Your+Project+Token</strong></p> -->
 
         
