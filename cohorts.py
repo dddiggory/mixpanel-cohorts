@@ -11,7 +11,7 @@ app = Flask(__name__)
 #http://755b3eae.ngrok.io/data?cohort=Highly+Engaged+Females&token=12345678
 @app.route('/')
 def hello_world():
-	return "Mixpanel Cohorts!"
+	return render_template('cohorts.html')
 
 
 @app.route('/cohorts', methods=['POST', 'GET'])
