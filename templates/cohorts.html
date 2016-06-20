@@ -1,46 +1,88 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
-    <title>Sticky Footer Template for Bootstrap</title>
+    <title>Starter Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+      body {
+        padding-top: 50px;
+      }
+      .starter-template {
+        padding: 40px 15px;
+        text-align: center;
+      }
+      #url-example {
+        color: blue;
+      }
 
+    </style>
     <!-- Custom styles for this template -->
-    <link href="sticky-footer.css" rel="stylesheet">
+    <link href="starter-template.css" rel="stylesheet">
+
   </head>
 
   <body>
 
-    <!-- Begin page content -->
-    <div class="container">
-      <div class="page-header m-t-1">
-        <h1>Sticky footer</h1>
-      </div>
-      <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
-      <!-- <p>Use <a href="../sticky-footer-navbar">the sticky footer with a fixed navbar</a> if need be, too.</p> -->
-    </div>
-
-    <footer class="footer">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Mixpanel Cohorts: Webhook Helper Service</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">How To Use</a></li>
+            <li><a href="#about">More Info</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>
-    </footer>
+    </nav>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Mixpanel Cohorts</h1>
+        <small>Diggory Rycroft, June 2016</small>
+        
+        <p class="lead"><br>This is a free, unofficial service for easily converting a filtered set of Mixpanel user profiles, like this:
+        <br><br>... into a saved ad hoc cohort, accessible in both your Engagement reports (e.g., Segmentation, Funnels, Retention) and for easy Notification targeting (i.e., saving a complex set of filters and using them for many different Notifications).
+        <br><br>To use it, we'll simply set up a Webhook notification in Mixpanel. <br>This can be either a one-time grouping from the Explore tab, or a recurring check via the Notifications tab.
+        <br><br>Direct your webhook to the following URL, replacing the bold portions with your preferred values:</p>
+
+        <p class="lead" id="url-example">https://mixpanel-cohorts.herokuapp.com/cohorts?cohort=<strong>Cohort+Name</strong>&token=<strong>Your+Project+Token</strong></p>
+
+        <p class="lead">Be sure to use "+" instead of spaces; the service will convert this back to spaces before sending the cohort to Mixpanel. Within seconds, your targeted group will have a new list-type property on their user profiles, called "Cohorts". You can use this to run ad hoc analyses on groups you are interested in. Enjoy!</p>
+      </div>
+
+    </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </body>
 </html>
