@@ -18,9 +18,12 @@ def hello_world():
 def parse_data():
 	if request.method == "GET":
 		return render_template('cohorts.html')
+	
 	params = request.args
 	Cohort_Name, Token = urllib.unquote_plus(params['cohort']), params['token']
 	userData = (json.loads(request.form.get('users')))
+
+	urllib2.urlopen("http://api.mixpanel.com/track/?data=eyJldmVudCI6ICJDb2hvcnQgU2NyaXB0IFJ1biIsICJwcm9wZXJ0aWVzIjogeyJ0b2tlbiI6ICJkaWdnc3Rva2VuIn19")
 
 	updateTemplate = {
 		"token": Token,
