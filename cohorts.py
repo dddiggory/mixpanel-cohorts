@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 import json
 import urllib
 import urllib2
@@ -9,14 +9,20 @@ import base64
 app = Flask(__name__)
 
 #http://755b3eae.ngrok.io/data?cohort=Highly+Engaged+Females&token=12345678
+
+#generate images
+
+
 @app.route('/')
 def hello_world():
+	url_for('static', filename='img/explore.png')
 	return render_template('cohorts.html')
 
 
-@app.route('/cohorts', methods=['POST', 'GET'])
+@app.route('/cohorts/', methods=['POST', 'GET'])
 def parse_data():
 	if request.method == "GET":
+		url_for('static', filename='img/explore.png')
 		return render_template('cohorts.html')
 	
 	params = request.args
