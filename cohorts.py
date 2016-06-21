@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-	url_for('static', filename='img/explore.png')
+	url_for('static', filename='img/filters.png')
 	return render_template('cohorts.html')
 
 

@@ -33,7 +33,9 @@
       .tutorial-img {
       	width:60%;
       }
-
+      input {
+        width: 12%;
+      }
     </style>
     
     <!-- <link href="starter-template.css" rel="stylesheet"> -->
@@ -70,24 +72,27 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Create Ad Hoc Cohorts in Mixpanel via Webhooks</h1>
-        <small>Diggory Rycroft, June 2016</small>
-        
+        <h1>Create Ad Hoc Cohorts in Mixpanel via Webhooks</h1>        
         
         <h3>How to use</h3>
         <p class="lead">
-        Ready to try it? Just direct a Mixpanel Webhook to the following URL, replacing the bold portions with your preferred values. Be sure to use "+" instead of spaces. Within seconds, your targeted group will have a new list-type property on their user profiles, called "Cohorts". You can use this to run ad hoc analyses on groups you are interested in.</p><br>
-        <code id='url-snippet'>https://mixpanel-cohorts.herokuapp.com/cohorts?cohort=<strong>Cohort+Name</strong>&token=<strong>YourToken</strong></code>
+        Ready to try it? Just direct a Mixpanel Webhook to the following URL, replacing the bold portions with <br>1) an arbitrary cohort name (use "+" instead of spaces) and 2) <a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">your Mixpanel project token</a>, respectively.</p><br>
+        <code id='url-snippet'>https://mixpanel-cohorts.herokuapp.com/cohorts?cohort=<strong>Any+Cohort+Name</strong>&token=<strong>YourToken</strong></code>
+        <!-- <br>
+        <code id='url-snippet'>https://mixpanel-cohorts.herokuapp.com/cohorts?cohort=<input value="Cohort+Name"></input>&token=<input value="YourToken"></input></code> -->
         <br><br>
-        <button class="btn" data-clipboard-text="https://mixpanel-cohorts.herokuapp.com/cohorts?cohort=Cohort+Name&token=YourToken">
+        <button class="btn btn-default" data-clipboard-text="https://mixpanel-cohorts.herokuapp.com/cohorts?cohort=Any+Cohort+Name&token=YourToken">
         copy to clipboard
         </button>
-
         <br><br>
-        <h3>What is this?</h3>
+        <p class="lead">Within seconds, your targeted group will have a new list-type property on their user profiles, called "Cohorts". You can use this to run ad hoc analyses on groups you are interested in.</p>
+        
+        <h3>What is this thing?</h3>
         <p class="lead">
         This is a free, unofficial service for easily converting a filtered set of Mixpanel user profiles, like this:
-        <br><em><small>image coming soon</small></em><br>... into a saved ad hoc cohort, accessible in both your Engagement reports (e.g., Segmentation, Funnels, Retention) and for easy Notification targeting (i.e., saving a complex set of filters and using them for many different Notifications).
+        <br><div><img src="static/img/filters.png" style="width: 50%"/></div>
+        <p class="lead">
+        <br>... into an ad hoc behavioral group, accessible in both your Engagement reports (e.g., Segmentation, Funnels, Retention) and for easy Notification targeting (i.e., saving a complex set of filters and using them for many different Notifications).
         <br><br>This tool supports both one-time groupings from the Explore tab and recurring checks via the Notifications tab. Note that while Webhooks are categorized as Notifications in Mixpanel, they do not trigger any communications to users themselves. This tool will not communicate with your users, and will not store your user data.
 
         <br>  
