@@ -5,40 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="mixpanel cohorts webhook helper service">
+    <meta name="author" content="diggory rycroft">
 
     <title>Mixpanel Cohorts: Webhook Helper Service</title>
 
-    <!-- Bootstrap core CSS -->
-    <!-- <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <!--clipboardjs -->
+    <link rel="stylesheet" href="static/stylesheet.css">
     <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.10/clipboard.min.js"></script>
-    <style>
-      body {
-        padding-top: 50px;
-      }
-      .starter-template {
-        padding: 40px 15px;
-        text-align: center;
-      }
-      #url-example {
-        color: blue;
-      }
-      #url-snippet {
-        font-size: 130%;
-      }
-      .tutorial-img {
-      	width:60%;
-      }
-      input {
-        width: 12%;
-      }
-    </style>
-    
-    <!-- <link href="starter-template.css" rel="stylesheet"> -->
 
     <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
     for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
@@ -47,7 +21,6 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -63,65 +36,79 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <!-- <li><a href="#details">Main</a></li> -->
-            <!-- <li><a href="#contact">Contact</a></li> -->
+            <!-- <li><a href="#contact">Contact</a></li> --> d
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
 
     <div class="container">
 
       <div class="starter-template">
-        <h1>Create Ad Hoc Cohorts in Mixpanel via Webhooks</h1>        
-        
-        <h3>How to use</h3>
-        <p class="lead">
-        Ready to try it? Just direct a Mixpanel Webhook to the following URL, replacing the bold portions with <br>1) an arbitrary cohort name (use "+" instead of spaces) and 2) <a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">your Mixpanel project token</a>, respectively.</p><br>
-        <code id='url-snippet'>https://mixpanel-cohorts.herokuapp.com/cohorts?cohort=<strong>Any+Cohort+Name</strong>&token=<strong>YourToken</strong></code>
-        <!-- <br>
-        <code id='url-snippet'>https://mixpanel-cohorts.herokuapp.com/cohorts?cohort=<input value="Cohort+Name"></input>&token=<input value="YourToken"></input></code> -->
-        <br><br>
-        <button class="btn btn-default" data-clipboard-text="https://mixpanel-cohorts.herokuapp.com/cohorts?cohort=Any+Cohort+Name&token=YourToken">
-        copy to clipboard
-        </button>
-        <br><br>
-        <p class="lead">Within seconds, your targeted group will have a new list-type property on their user profiles, called "Cohorts". You can use this to run ad hoc analyses on groups you are interested in.</p>
-        
-        <h3>What is this thing?</h3>
-        <p class="lead">
-        This is a free, unofficial service for easily converting a filtered set of Mixpanel user profiles, like this:
-        <br><div><img src="static/img/filters.png" style="width: 50%"/></div>
-        <p class="lead">
-        <br>... into an ad hoc behavioral group, accessible in both your Engagement reports (e.g., Segmentation, Funnels, Retention) and for easy Notification targeting (i.e., saving a complex set of filters and using them for many different Notifications).
-        <br><br>This tool supports both one-time groupings from the Explore tab and recurring checks via the Notifications tab. Note that while Webhooks are categorized as Notifications in Mixpanel, they do not trigger any communications to users themselves. This tool will not communicate with your users, and will not store your user data.
+        <h1>
+        	Create Ad Hoc Cohorts in Mixpanel via Webhooks
+        </h1>
 
-        <br>  
-        <h3>Where can I find my project token & is it safe to share?</h3>
+        <h3>
+        	How to use
+        </h3>
         <p class="lead">
-        <a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">Here's how to find your project token.</a>
-        This service will not store your Project Token; it is discarded after use. Note that your Token is used for event tracking and is intended to be public, whereas your API Key & API Secret provide data <em>access</em> and should generally not be shared outside of your organization. <a href="https://mixpanel.com/help/questions/articles/what-is-the-difference-between-my-token-key-and-secret">Click here for additional guidance.</a>
+        	Ready to try it? Just direct a Mixpanel Webhook to the following URL, replacing the bold portions with <br>1) an arbitrary cohort name (use "+" instead of spaces) and 2) <a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">your Mixpanel project token</a>, respectively.
         </p>
-  <!--       
-        <h3>Sample Mixpanel Project</h3>
-        <p class="lead">Coming soon.
-        Want to try this out on a group of fake users? <br><a href="http://www.mixpanel.com">Log into Mixpanel</a> with email address "sandbox@cohort.biz" and password "TESTER", <br>and try it on the "Cohort Sandbox" project.</p>
-   -->      <!-- <p class="lead" id="url-example">https://mixpanel-cohorts.herokuapp.com/cohorts?cohort=<strong>Cohort+Name</strong>&token=<strong>Your+Project+Token</strong></p> -->
-<!-- 
-        <h3>Detailed Instructions</h3>
-        <a name="details"></a>
+        <div id="url-snippet">
+        	<code>
+        		https://mixpanel-cohorts.herokuapp.com/cohorts?cohort=<strong>Any+Cohort+Name</strong>&token=<strong>YourToken</strong>
+        	</code>
+        	<button class="btn btn-default" data-clipboard-text="https://mixpanel-cohorts.herokuapp.com/cohorts?cohort=Any+Cohort+Name&token=YourToken">
+        		copy to clipboard
+        	</button>
+        </div>
+        
         <p class="lead">
-          Coming soon.
+        	Within seconds, your targeted group will have a new list-type property on their user profiles, called "Cohorts".<br>You can now analyze this group throughout the entire Mixpanel UI, instead of just in Explore. This also allows you to use Event Triggers to target features that don't currently support it (i.e., In-App Messages, Surveys, and A/B Tests).
         </p>
- -->
-        <!-- <pre class="snippet"><button class="btn" data-clipboard-snippet=""><img class="clippy" width="13" src="assets/images/clippy.svg" alt="Copy to clipboard"></button><code class="html hljs xml">hey
-        </code></pre> -->
 
+        <div id="github-link">
+        	<a href="https://github.com/dddiggory/mixpanel-cohorts">
+        		<img src="static/img/Octocat.png" width="40px"/><br>View source on GitHub
+        	</a>
+        </div>
+        
+        <h3>
+        	What is this thing?
+        </h3>
+        <p class="lead">
+        	This is a free, unofficial service for easily converting a filtered set of Mixpanel user profiles, like this:
+        <div id="filters-img">
+        	<img class="img-responsive" src="static/img/filters.png" width="120%"/>
+        </div>
+        <p class="lead">
+        	... into an ad hoc behavioral group, accessible in both your Engagement reports (e.g., Segmentation, Funnels, Retention) and for easy Notification targeting (i.e., "bookmarking" a set of useful Notification triggers).
+        <p>
+        <p class="lead">
+        	This tool supports both one-time groupings from the Explore tab and deliveries via the Notifications tab. Note that while Webhooks are categorized as Notifications in Mixpanel, they do not trigger any messages to users themselves. This tool will not communicate with your users, and will not store your user data.
+        </p>
+
+        <h3>
+        	Where can I find my project token & is it safe to share?
+        </h3>
+        <p class="lead">
+        	<a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">Here's how to find your project token.</a>
+        	This service will not store your Project Token; it is discarded after use. Note that your Token is used for event tracking and is intended to be public, whereas your API Key & API Secret provide data <em>access</em> and should generally not be shared outside of your organization. <a href="https://mixpanel.com/help/questions/articles/what-is-the-difference-between-my-token-key-and-secret">Click here for additional guidance.</a>
+        </p>
+
+
+        
+        <h3>
+        	More Info
+        </h3>
+        <p class="lead">
+        	<a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">Here's how to find your project token.</a>
+        	This service will not store your Project Token; it is discarded after use. Note that your Token is used for event tracking and is intended to be public, whereas your API Key & API Secret provide data <em>access</em> and should generally not be shared outside of your organization. <a href="https://mixpanel.com/help/questions/articles/what-is-the-difference-between-my-token-key-and-secret">Click here for additional guidance.</a>
+        </p>
         
       </div>
 
-
-      <!-- <img src="static/img/explore.png" class="img-responsive tutorial-img"/> -->
-      
       <script>var clipboard = new Clipboard('.btn');</script>
     </div><!-- /.container -->
 

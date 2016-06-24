@@ -1,0 +1,34 @@
+body {
+	padding-top: 50px;
+}
+h3 {
+	margin-top: 30px;
+}
+#github-link {
+	margin-top: 30px;
+}
+.starter-template {
+	padding: 40px 15px;
+	text-align: center;
+}
+.lead {
+	margin: 20px;
+}
+#url-example {
+	color: blue;
+}
+#url-snippet {
+	font-size: 160%;
+	text-align: center;
+}
+#filters-img {
+	width: 60%;
+	margin: auto;
+
+}
+.btn-default {
+	margin: 10px;
+}
+input {
+	width: 12%;
+}

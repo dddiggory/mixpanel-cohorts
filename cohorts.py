@@ -8,27 +8,27 @@ import base64
 
 app = Flask(__name__)
 
-#http://755b3eae.ngrok.io/data?cohort=Highly+Engaged+Females&token=12345678
-
-#generate images
-
-
 @app.route('/')
 def hello_world():
 	url_for('static', filename='img/filters.png')
+	url_for('static', filename='img/GitHub_Logo.png')
+	url_for('static', filename='img/Octocat.png')
 	return render_template('cohorts.html')
 
 
 @app.route('/cohorts/', methods=['POST', 'GET'])
 def parse_data():
 	if request.method == "GET":
-		url_for('static', filename='img/explore.png')
+		url_for('static', filename='img/filters.png')
+		url_for('static', filename='img/GitHub_Logo.png')
+		url_for('static', filename='img/Octocat.png')
 		return render_template('cohorts.html')
 	
 	params = request.args
 	Cohort_Name, Token = urllib.unquote_plus(params['cohort']), params['token']
 	userData = (json.loads(request.form.get('users')))
 
+	#Usage tracking
 	urllib2.urlopen("http://api.mixpanel.com/track/?data=eyJldmVudCI6ICJDb2hvcnQgU2NyaXB0IFJ1biIsICJwcm9wZXJ0aWVzIjogeyJ0b2tlbiI6ICJkaWdnc3Rva2VuIn19")
 
 	updateTemplate = {
@@ -51,11 +51,11 @@ def parse_data():
 			req = urllib2.Request(mpURL,'data='+base64.b64encode(json.dumps(batch)))
 			response = urllib2.urlopen(req)
 			totalUsers -= 50
-			print "Sending batch of 50; %d users remain." % totalUsers 
+			# print "Sending batch of 50; %d users remain." % totalUsers 
 			batch = []
 
-	if len(batch) != 0:
-		print "Sending final batch of %d" % len(batch)
+	# if len(batch) != 0:
+	# 	print "Sending final batch of %d" % len(batch)
 	req = urllib2.Request(mpURL,'data='+base64.b64encode(json.dumps(batch)))
 	response = urllib2.urlopen(req)
 
