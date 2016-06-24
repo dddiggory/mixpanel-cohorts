@@ -97,7 +97,12 @@
         	This service will not store your Project Token; it is discarded after use. Note that your Token is used for event tracking and is intended to be public, whereas your API Key & API Secret provide data <em>access</em> and should generally not be shared outside of your organization. <a href="https://mixpanel.com/help/questions/articles/what-is-the-difference-between-my-token-key-and-secret">Click here for additional guidance.</a>
         </p>
         
-        
+        <h3>
+        	Usage & Disclaimers
+        </h3>
+        <p class="lead">
+        	This service is running on a single free Heroku dyno and hasn't been designed with large-scale usage in mind. This service may be removed or altered at any time; you should not rely on it for anything mission-critical. On the bright side, the worst case scenario is simply non-operation. If you plan on running this process regularly for vast volumes of users, I would recommend hosting your own webhook handler.<br><a href="https://github.com/dddiggory/mixpanel-cohorts">Feel free to use my code</a>!
+        </p>
       </div>
 
       <script>var clipboard = new Clipboard('.btn');</script>
