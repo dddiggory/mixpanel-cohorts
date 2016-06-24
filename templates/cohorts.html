@@ -86,10 +86,10 @@
         	<img class="img-responsive" src="static/img/filters.png" width="120%"/>
         </div>
         <p class="lead">
-        	... into an ad hoc behavioral grouping. This means it's 1) accessible for analysis & comparison in your Engagement reports (e.g., Segmentation, Funnels, Retention), 2) usable with In-App Messages, Surveys, and A/B tests, and 3) a great way to "bookmark" sets of frequently-used notification triggers.
+        	... into an ad hoc behavioral grouping. It's stored as a value within a list-type People Property called "Cohorts". This means it's 1) accessible for analysis & comparison in your Engagement reports (e.g., Segmentation, Funnels, Retention), 2) usable with In-App Messages, Surveys, and A/B tests, and 3) a great way to "bookmark" sets of frequently-used notification triggers.
         <p>
         <p class="lead">
-        	This tool supports both one-time groupings from the Explore tab and deliveries via the Notifications tab. Note that while Webhooks are categorized as Notifications in Mixpanel, they do not trigger any messages to users themselves. This tool will not communicate with your users, and will not store your user data.
+        	This tool supports both one-time groupings from the Explore tab and ongoing deliveries via the Notifications tab. Note that while Webhooks are categorized as Notifications in Mixpanel, they do not trigger any messages to users themselves. This tool will not communicate with your users, nor will it store your user data.
         </p>
 
         <h3>
@@ -104,7 +104,7 @@
         	Usage & Disclaimers
         </h3>
         <p class="lead">
-        	This service is running on a single free Heroku dyno and hasn't been designed with large-scale usage in mind. This service may be removed or altered at any time; you should not rely on it for anything mission-critical. On the bright side, the worst case scenario is simply non-operation. If you plan on running this process regularly for vast volumes of users, I would recommend hosting your own webhook handler.<br><a href="https://github.com/dddiggory/mixpanel-cohorts">Feel free to use my code</a>!
+        	This service is running on a single free Heroku dyno and hasn't been designed with large-scale usage in mind. This service may be removed or altered at any time; you should not rely on it for anything mission-critical. On the bright side, the worst case scenario is simply non-operation. If you plan on running this process regularly for vast volumes of users, I would recommend hosting your own version of this webhook handler.<br><a href="https://github.com/dddiggory/mixpanel-cohorts">Feel free to use our code!</a>
         </p>
       </div>
 
