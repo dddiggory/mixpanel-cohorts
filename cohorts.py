@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, redirect
 import json
 import urllib
 import urllib2
@@ -9,7 +9,7 @@ import base64
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
+def index():
 	url_for('static', filename='img/filters.png')
 	url_for('static', filename='img/GitHub_Logo.png')
 	url_for('static', filename='img/Octocat.png')
@@ -19,10 +19,7 @@ def hello_world():
 @app.route('/cohorts/', methods=['POST', 'GET'])
 def parse_data():
 	if request.method == "GET":
-		url_for('static', filename='img/filters.png')
-		url_for('static', filename='img/GitHub_Logo.png')
-		url_for('static', filename='img/Octocat.png')
-		return render_template('cohorts.html')
+		return redirect(url_for('index'))
 	
 	params = request.args
 	Cohort_Name, Token = urllib.unquote_plus(params['cohort']), params['token']
