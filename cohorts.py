@@ -16,11 +16,10 @@ def index():
 	return render_template('cohorts.html')
 
 
-@app.route('/cohorts/', methods=['POST', 'GET'])
+@app.route('/cohorts', methods=['POST', 'GET'])
 def parse_data():
 	if request.method == "GET":
 		return redirect(url_for('index'))
-	
 	params = request.args
 	Cohort_Name, Token = urllib.unquote_plus(params['cohort']), params['token']
 	userData = (json.loads(request.form.get('users')))
