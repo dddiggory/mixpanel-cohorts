@@ -8,7 +8,7 @@
     <meta name="description" content="mixpanel cohorts webhook helper service">
     <meta name="author" content="diggory rycroft">
 
-    <title>Mixpanel Cohorts: Webhook Helper Service</title>
+    <title>Create Ad Hoc Cohorts in Mixpanel via Webhooks</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/stylesheet.css">
@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Mixpanel Cohorts: Webhook Helper Service</a>
+          <a class="navbar-brand" href="#">Mixpanel Cohorts via Webhooks</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -51,7 +51,7 @@
         <h1>
         	Create Ad Hoc Cohorts in Mixpanel via Webhooks
         </h1>
-
+        <small>Proof of Concept</small>
         <h3>
         	How to use
         </h3>
@@ -71,6 +71,11 @@
         	Within seconds, your targeted group will have a new list-type property on their user profiles, called "Cohorts".<br>You can now analyze this group throughout the entire Mixpanel UI, instead of just in Explore. This also allows you to use Event Triggers with features that don't currently support it (i.e., In-App Messages, Surveys, and A/B Tests).
         </p>
 
+        <p class="lead">
+            This is a proof of concept, running on a single Free Dyno on Heroku with limited bandwidth. It has not been scaled for high volumes and it <strong><em>will</em> time out if overloaded</strong>. If you're sending a batch of more than a couple thousand users or intending to use this in production, please host this yourself using the reference code in GitHub. Thanks!
+        </p>
+
+
         <div>
         	<a href="https://github.com/dddiggory/mixpanel-cohorts" id="github-link" target='_blank'>
         		<img src="static/img/Octocat.png" width="40px"/><br>View source on GitHub
@@ -81,7 +86,7 @@
         	What is this thing?
         </h3>
         <p class="lead">
-        	This is a free, unofficial service for easily converting a filtered set of Mixpanel user profiles, like this:
+        	This is a proof of concept of a method for easily converting a filtered set of Mixpanel user profiles, like this:
         <div id="filters-img">
         	<img class="img-responsive" src="static/img/filters.png" width="120%"/>
         </div>
@@ -97,16 +102,8 @@
         </h3>
         <p class="lead">
         	<a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">Here's how to find your project token.</a>
-        	This service will not store your Project Token; it is discarded after use. Note that your Token is used for event tracking and is intended to be public, whereas your API Key & API Secret provide data <em>access</em> and should generally not be shared outside of your organization. <a href="https://mixpanel.com/help/questions/articles/what-is-the-difference-between-my-token-key-and-secret">Click here for additional guidance.</a>
+        	This tool will not store your Project Token; it is discarded after use. Note that your Token is used for event tracking and is intended to be public, whereas your API Key & API Secret provide data <em>access</em> and should generally not be shared outside of your organization. <a href="https://mixpanel.com/help/questions/articles/what-is-the-difference-between-my-token-key-and-secret">Click here for additional guidance.</a>
         </p>
-        
-        <h3>
-        	Usage & Disclaimers
-        </h3>
-        <p class="lead">
-        	This service is running on a single free Heroku dyno and hasn't been designed with large-scale usage in mind. This service may be removed or altered at any time; you should not rely on it for anything mission-critical. On the bright side, the worst case scenario is simply non-operation. If you plan on running this process regularly for vast volumes of users, I would recommend hosting your own version of this webhook handler.<br><a href="https://github.com/dddiggory/mixpanel-cohorts">Feel free to use our code!</a>
-        </p>
-      </div>
 
       <script>var clipboard = new Clipboard('.btn');</script>
     </div><!-- /.container -->
