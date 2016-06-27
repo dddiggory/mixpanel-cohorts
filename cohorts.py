@@ -53,8 +53,8 @@ def parse_data():
 
 	# if len(batch) != 0:
 	# 	print "Sending final batch of %d" % len(batch)
-	# req = urllib2.Request(mpURL,'data='+base64.b64encode(json.dumps(batch)))
-	# response = urllib2.urlopen(req)
+	req = urllib2.Request(mpURL,'data='+base64.b64encode(json.dumps(batch)))
+	response = urllib2.urlopen(req)
 
 	return '200 OK'
 
