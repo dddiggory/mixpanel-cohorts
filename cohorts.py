@@ -25,7 +25,7 @@ def parse_data():
 	Cohort_Name, Token = urllib.unquote_plus(params['cohort']), params['token']
 	userData = (json.loads(request.form.get('users')))
 
-	#Usage tracking
+	#Usage tracking. Please remove if rehosting.
 	urllib2.urlopen("http://api.mixpanel.com/track/?data=eyJldmVudCI6ICJDb2hvcnQgU2NyaXB0IFJ1biIsICJwcm9wZXJ0aWVzIjogeyJ0b2tlbiI6ICJkaWdnc3Rva2VuIn19")
 
 	updateTemplate = {
@@ -39,22 +39,22 @@ def parse_data():
 	batch = []
 
 	totalUsers = len(userData)
-	print "Webhook received. %d total users." % totalUsers
+	# print "Webhook received. %d total users." % totalUsers
 	for user in userData:
 		update = updateTemplate.copy()
 		update["$distinct_id"] = user["$distinct_id"]
 		batch.append(update)
-		if len(batch) == 50:
+		if len(batch):
 			req = urllib2.Request(mpURL,'data='+base64.b64encode(json.dumps(batch)))
 			response = urllib2.urlopen(req)
-			totalUsers -= 50
+			# totalUsers -= 50
 			# print "Sending batch of 50; %d users remain." % totalUsers 
 			batch = []
 
 	# if len(batch) != 0:
 	# 	print "Sending final batch of %d" % len(batch)
-	req = urllib2.Request(mpURL,'data='+base64.b64encode(json.dumps(batch)))
-	response = urllib2.urlopen(req)
+	# req = urllib2.Request(mpURL,'data='+base64.b64encode(json.dumps(batch)))
+	# response = urllib2.urlopen(req)
 
 	return '200 OK'
 
