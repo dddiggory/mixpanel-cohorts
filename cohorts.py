@@ -46,12 +46,8 @@ def parse_data():
 		if len(batch):
 			req = urllib2.Request(mpURL,'data='+base64.b64encode(json.dumps(batch)))
 			response = urllib2.urlopen(req)
-			# totalUsers -= 50
-			# print "Sending batch of 50; %d users remain." % totalUsers 
 			batch = []
 
-	# if len(batch) != 0:
-	# 	print "Sending final batch of %d" % len(batch)
 	req = urllib2.Request(mpURL,'data='+base64.b64encode(json.dumps(batch)))
 	response = urllib2.urlopen(req)
 
