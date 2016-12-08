@@ -1,5 +1,0 @@
-This is a proof of concept for easily converting a filtered set of Mixpanel user profiles into a saved ad hoc cohort via Mixpanel's Webhook feature. Your targeted group will have a new list-type property on their user profiles, called "Cohorts". You can now analyze this group throughout the entire Mixpanel UI, instead of just in Explore, and also use Event Triggers with features that don't currently support it (i.e., In-App Messages, Surveys, and A/B Tests).
-
-This tool supports both one-time groupings from the Explore tab and recurring checks via the Notifications tab. Note that while Webhooks are categorized as Notifications in Mixpanel, they do not trigger any communications to users themselves. This tool will not communicate with your users, and will not store your user data. 
-
-Full site + info @ https://mixpanel-cohorts.herokuapp.com/
