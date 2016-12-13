@@ -1,121 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="mixpanel cohorts webhook helper service">
-    <meta name="author" content="diggory rycroft">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="mixpanel cohorts webhook helper service">
+	<meta name="author" content="diggory rycroft">
 
-    <title>Create Ad Hoc Cohorts in Mixpanel via Webhooks</title>
+	<title>Create Ad Hoc Cohorts in Mixpanel via Webhooks</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/stylesheet.css">
-    
-    <!-- start Mixpanel --><script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
-    0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
-    for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
-    mixpanel.init("diggstoken", {
-        cross_subdomain_cookie: false, 
-        loaded: function(mixpanel) {
-        distinct_id = mixpanel.get_distinct_id();}
-        });
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="static/stylesheet.css">
+	
+	<!-- start Mixpanel --><script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+	0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+	for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+	mixpanel.init("diggstoken", {
+		cross_subdomain_cookie: false, 
+		loaded: function(mixpanel) {
+		distinct_id = mixpanel.get_distinct_id();}
+		});
 
 
-	mixpanel.track("Cohorts Heroku Pageload");
+	mixpanel.track("Cohorts Pageload");
 	mixpanel.track_links("#github-link", "Cohorts Github Clickthrough")
 	</script><!-- end Mixpanel -->
 
   </head>
 
   <body>
-    <!-- <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Mixpanel Cohorts via Webhooks</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#details">Main</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav> -->
 
-    <div class="container">
+	<div class="container">
 
-      <div class="starter-template">
-        <h1>
-        	Create Ad Hoc Cohorts in Mixpanel via Webhooks
-        </h1>
-        <small>
-            Proof of concept running on Google App Engine's Free Tier.<br>
-            Please host this yourself if mission-critical.
-        </small>
-        <h3>
-        	How to use
-        </h3>
-        <p class="lead">
-        	Ready to try it? Just direct a <a href="https://mixpanel.com/help/reference/webhooks">Mixpanel Webhook</a> to the following URL, replacing the bold portions with <br>1) an arbitrary cohort name (use "+" instead of spaces) and 2) <a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">your Mixpanel project token</a>, respectively.
-        </p>
-        <div id="url-snippet">
-        	<code>
-        		mpcohorts.com/add?cohort=<strong>Any+Cohort+Name</strong>&token=<strong>YourToken</strong></code><br>
-        	<button class="btn btn-default" data-clipboard-text="mpcohorts.com/add?cohort=Any+Cohort+Name&token=YourToken">
-        		copy to clipboard
-        	</button>
-        </div>
-        
+	  <div class="main-content">
+		<h1>
+			Create Ad Hoc Cohorts in Mixpanel via Webhooks
+		</h1>
+		<small>
+			Proof of concept running on Google App Engine's Free Tier.<br>
+			Please host this yourself if mission-critical.
+		</small>
+		<h3>
+			How to use
+		</h3>
+		<p class="lead">
+			Ready to try it? Just direct a <a href="https://mixpanel.com/help/reference/webhooks">Mixpanel Webhook</a> to the following URL, replacing the bold portions with <br>1) an arbitrary cohort name and 2) <a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">your Mixpanel project's public token</a>, respectively.
+		</p>
+		<!-- <div id="url-snippet">
+			<code>
+				mpcohorts.com/add?cohort=<strong>Any Cohort Name</strong>&token=<strong>YourToken</strong></code><br>
+			<button class="btn btn-default" data-clipboard-text="mpcohorts.com/add?cohort=Any Cohort Name&token=YourToken">
+				copy to clipboard
+			</button>
+		</div> -->
 
-        <p class="lead">
-        	Within seconds, your targeted group will have a new list-type property on their user profiles, called "Cohorts".<br>You can now analyze this group throughout the entire Mixpanel UI, instead of just in Explore. This also allows you to use Event Triggers with features that don't currently support it (i.e., In-App Messages and A/B Tests).
-        </p>
+		<!-- START TABS -->
+		<div class="tabs">
+			<ul class="tab-links">
+				<li class="active"><a href="#tab1">Add Cohort</a></li>
+				<li><a href="#tab2">Remove Cohort</a></li>
+				<li><a href="#tab3">Clear All Cohorts</a></li>
+			</ul>
+		 
+			<div class="tab-content">
+				<div id="tab1" class="tab active">
+					<div class="url-snippet">
+						<code>
+							mpcohorts.com/add?cohort=<strong>Any Cohort Name</strong>&token=<strong>YourToken</strong></code><br>
+						<button class="btn btn-default" data-clipboard-text="mpcohorts.com/add?cohort=Any Cohort Name&token=YourToken">
+							copy to clipboard
+						</button>
+					</div>
+				</div>
+		 
+				<div id="tab2" class="tab">
+					<div class="url-snippet">
+						<code>
+							mpcohorts.com/remove?cohort=<strong>Any Cohort Name</strong>&token=<strong>YourToken</strong></code><br>
+						<button class="btn btn-default" data-clipboard-text="mpcohorts.com/remove?cohort=Any Cohort Name&token=YourToken">
+							copy to clipboard
+						</button>
+					</div>
+				</div>
+		 
+				<div id="tab3" class="tab">
+					<div class="url-snippet">
+						<code>
+							mpcohorts.com/clearall?token=<strong>YourToken</strong></code><br>
+						<button class="btn btn-default" data-clipboard-text="mpcohorts.com/clearall?token=YourToken">
+							copy to clipboard
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END TABS -->
 
-        <div>
-        	<a href="https://github.com/dddiggory/mixpanel-cohorts" id="github-link" target='_blank'>
-        		<img src="static/img/Octocat.png" width="40px"/><br>View source on GitHub
-        	</a>
-        </div>
-        
-        <h3>
-        	What is this thing?
-        </h3>
-        <p class="lead">
-        	This is a service that easily converts a filtered set of Mixpanel user profiles, like this one:
-        <div id="filters-img">
-        	<img class="img-responsive" src="static/img/filters.png" width="120%"/>
-        </div>
-        <p class="lead">
-        	... into an ad hoc behavioral grouping. It's stored as a value within a list-type People Property called "Cohorts". This means it's 1) accessible for analysis & comparison in your Engagement reports (e.g., Segmentation, Funnels, Retention), 2) usable with In-App Messages, Surveys, and A/B tests, and 3) a great way to "bookmark" sets of frequently-used notification triggers.
-        <p>
-        <p class="lead">
-        	This tool supports both one-time groupings from the Explore tab and ongoing deliveries via the Notifications tab. Note that while Webhooks are categorized as Notifications in Mixpanel, they do not trigger any messages to users themselves. This tool will not communicate with your users, nor will it store your user data.
-        </p>
 
-        <h3>
-        	Where can I find my project token & is it safe to share?
-        </h3>
-        <p class="lead">
-        	<a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">Here's how to find your project token.</a>
-        	This tool will not store your Project Token; it is discarded after use. Note that your Token is used for event tracking and is intended to be public, whereas your API Key & API Secret provide data <em>access</em> and should generally not be shared outside of your organization. <a href="https://mixpanel.com/help/questions/articles/what-is-the-difference-between-my-token-key-and-secret">Click here for additional guidance.</a>
-        </p>
 
-    </div>
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
-    
+		<p class="lead">
+			Within seconds, your targeted group will have a new list-type property on their user profiles, called "Cohorts".<br>You can now analyze this group throughout the entire Mixpanel reporting UI and your raw data, instead of just in Explore. This also allows you to use Event Triggers with features that don't yet support it (e.g., In-App Messages and A/B Tests).
+		</p>
+
+		<div>
+			<a href="https://github.com/dddiggory/mixpanel-cohorts" id="github-link" target='_blank'>
+				<img src="static/img/Octocat.png" width="40px"/><br>View source on GitHub
+			</a>
+		</div>
+		
+		<h3>
+			What is this thing?
+		</h3>
+		<p class="lead">
+			This is a service that easily converts a filtered set of Mixpanel user profiles, like this one:
+		<div id="filters-img">
+			<img class="img-responsive" src="static/img/filters.png" width="120%"/>
+		</div>
+		<p class="lead">
+			... into an ad hoc behavioral grouping. It's stored as a value within a list-type People Property called "Cohorts". This means it's 1) accessible for analysis & comparison in your Engagement reports (e.g., Segmentation, Funnels, Retention), 2) usable with In-App Messages, Surveys, and A/B tests, and 3) a great way to "bookmark" sets of frequently-used notification triggers.
+		<p>
+		<p class="lead">
+			This tool supports both one-time groupings from the Explore tab and ongoing deliveries via the Notifications tab. Note that while Webhooks are categorized as Notifications in Mixpanel, they do not trigger any messages to users themselves. This tool will not communicate with your users, nor will it store your user data.
+		</p>
+
+		<h3>
+			Where can I find my project token & is it safe to share?
+		</h3>
+		<p class="lead">
+			<a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">Here's how to find your project token.</a>
+			This tool will not store your Project Token; it is discarded after use. Note that your Token is used for event tracking and is intended to be public, whereas your API Key & API Secret provide data <em>access</em> and should generally not be shared outside of your organization. <a href="https://mixpanel.com/help/questions/articles/what-is-the-difference-between-my-token-key-and-secret">Click here for additional guidance.</a>
+		</p>
+
+
+	</div>
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
+	<script>new Clipboard('.btn');</script>
+	
+	<script>
+		$(document).ready(function() {
+			$('.tabs .tab-links a').on('click', function(e)  {
+				var currentAttrValue = $(this).attr('href');
+		 
+				// Show/Hide Tabs
+				$('.tabs ' + currentAttrValue).show().siblings().hide();
+		 
+				// Change/remove current tab to active
+				$(this).parent('li').addClass('active').siblings().removeClass('active');
+		 
+				e.preventDefault();
+			});
+		});
+	</script>
 
   </body>
 </html>

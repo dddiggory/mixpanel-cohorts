@@ -52,22 +52,38 @@ def server_error(e):
 
 @app.route('/add', methods=['POST', 'GET'])
 @app.route('/cohorts', methods=['POST', 'GET'])
+@app.route('/remove', methods=['POST', 'GET'])
+@app.route('/delete', methods=['POST', 'GET'])
+@app.route('/clearall', methods=['POST', 'GET'])
 def parse_data():
 	if request.method == "GET":
 		return redirect(url_for('index'))
 	params = request.args
-	Cohort_Name, Token = urllib.unquote_plus(params['cohort']), params['token']
+
+	if params.get('cohort'):
+		Cohort_Name, Token = urllib.unquote_plus(params['cohort']), params['token']
+	else:
+		Token = urllib.unquote_plus(params['token'])
+
 	userData = (json.loads(request.form.get('users')))
+
+	if "add" in request.path.lower() or "cohorts" in request.path.lower():
+		updateAction = {"$union": {"Cohorts": [Cohort_Name]}}
+	elif "remove" in request.path.lower() or "delete" in request.path.lower():
+		updateAction = {"$remove": {"Cohorts": Cohort_Name}}
+	elif "clearall" in request.path.lower():
+		updateAction = {"$unset": ["Cohorts"]}
+		Cohort_Name = None
 
 	#Usage tracking. Please remove if rehosting.
 	urllib2.urlopen("http://api.mixpanel.com/track/?data=eyJldmVudCI6ICJDb2hvcnQgU2NyaXB0IFJ1biIsICJwcm9wZXJ0aWVzIjogeyJ0b2tlbiI6ICJkaWdnc3Rva2VuIn19")
 
 	updateTemplate = {
 		"token": Token,
-		"$union": {"Cohorts": [Cohort_Name]},
 		"$ignore_time": True,
 		"$ip": 0
 	}
+	updateTemplate.update(updateAction)
 
 	mpURL = "http://api.mixpanel.com/engage/?verbose=1"
 	batch = []
@@ -87,6 +103,7 @@ def parse_data():
 	response = urllib2.urlopen(req)
 
 	return '200 OK'
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

@@ -7,7 +7,7 @@ h3 {
 #github-link {
 	margin-top: 30px;
 }
-.starter-template {
+.main-content {
 	/*padding: 40px 15px;*/
 	text-align: center;
 }
@@ -17,7 +17,7 @@ h3 {
 #url-example {
 	color: blue;
 }
-#url-snippet {
+.url-snippet {
 	font-size: 150%;
 	text-align: center;
 }
@@ -29,6 +29,99 @@ h3 {
 .btn-default {
 	margin: 10px;
 }
+./*btn-info {
+    background-color: #FFFFFF;
+}
+*/
 input {
 	width: 12%;
 }
+
+/* Style the list */
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/*----- Tabs -----*/
+.tabs {
+    /*width:100%;*/
+    width:65%;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    display:inline-block;
+    text-decoration:none;
+}
+ 
+    /*----- Tab Links -----*/
+    /* Clearfix */
+    .tab-links:after {
+        display:block;
+        clear:both;
+        content:'';
+    }
+ 
+    .tab-links li {
+        margin:0px 5px;
+        /*float:left;*/
+        float:left;
+        list-style:none;
+    }
+ 
+        .tab-links a {
+            padding:9px;
+            /*display:inline-block;*/
+            border-radius:3px 3px 3px 3px;
+            background:#f7f7f7;
+            font-size:16px;
+            font-weight:500;
+            color:#4c4c4c;
+            transition:all linear 0.15s;
+        }
+ 
+        .tab-links a:hover {
+            background:#def7ff;
+            text-decoration:none;
+        }
+ 
+    li.active a, li.active a:hover {
+        /*background:#fff;*/
+        background:#c1f0ff;
+        color:#4c4c4c;
+        text-decoration:none;   
+    }
+ 
+    /*----- Content of Tabs -----*/
+    .tab-content {
+        padding:8px 0px;
+        border-radius:8px;
+        /*box-shadow:-1px 1px 1px rgba(0,0,0,0.15);*/
+        box-shadow: 0 0 0 6px rgba(247,247,247,1);
+        /*background:#fff;*/
+        background:#ffffff;
+    }
+ 
+        .tab {
+            display:none;
+        }
+ 
+        .tab.active {
+            display:block;
+        }
