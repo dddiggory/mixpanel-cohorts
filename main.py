@@ -76,7 +76,9 @@ def parse_data():
 		Cohort_Name = None
 
 	#Usage tracking. Please remove if rehosting.
-	urllib2.urlopen("http://api.mixpanel.com/track/?data=eyJldmVudCI6ICJDb2hvcnQgU2NyaXB0IFJ1biIsICJwcm9wZXJ0aWVzIjogeyJ0b2tlbiI6ICJkaWdnc3Rva2VuIn19")
+	mpTrackingObject = {"event": "Cohort Script Run", "properties": {"token": "diggstoken", "distinct_id": Token, "Customer Token": Token, "Customer Cohort Name": Cohort_Name}}
+	mpTrackingURL = "http://api.mixpanel.com/track/?data="+base64.b64encode(json.dumps(mpTrackingObject))
+	urllib2.urlopen(mpTrackingURL)
 
 	updateTemplate = {
 		"token": Token,

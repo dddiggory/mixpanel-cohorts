@@ -38,22 +38,15 @@
 			Create Ad Hoc Cohorts in Mixpanel via Webhooks
 		</h1>
 		<small>
-			Proof of concept running on Google App Engine's Free Tier.<br>
-			Please host this yourself if mission-critical.
+			This is an unofficial tool running on Google App Engine's Free Tier, and may change or stop working at any time.<br>
+			Please <a href="https://github.com/dddiggory/mixpanel-cohorts/blob/master/main.py" target='_blank'>review the code</a> yourself before using this for anything critical.
 		</small>
 		<h3>
-			How to use
+			Get started
 		</h3>
 		<p class="lead">
-			Ready to try it? Just direct a <a href="https://mixpanel.com/help/reference/webhooks">Mixpanel Webhook</a> to the following URL, replacing the bold portions with <br>1) an arbitrary cohort name and 2) <a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">your Mixpanel project's public token</a>, respectively.
-		</p>
-		<!-- <div id="url-snippet">
-			<code>
-				mpcohorts.com/add?cohort=<strong>Any Cohort Name</strong>&token=<strong>YourToken</strong></code><br>
-			<button class="btn btn-default" data-clipboard-text="mpcohorts.com/add?cohort=Any Cohort Name&token=YourToken">
-				copy to clipboard
-			</button>
-		</div> -->
+			This is an unofficial user cohort builder for <a href="http://mixpanel.com">Mixpanel</a>. <br>Ready to try it? Just direct a <a href="https://mixpanel.com/help/reference/webhooks">Mixpanel Webhook</a> to the URL below, replacing the <br>bold portions with 1) a cohort name of your choosing (for example, "Highly Active New Signups") <br>and 2) <a href="https://mixpanel.com/help/questions/articles/where-can-i-find-my-project-token">your Mixpanel project's public token</a>, respectively.</p>
+			<p class="lead">Here's a <a href="https://vimeo.com/195549679" target="_blank">quick video walkthrough</a> of the process.</p>
 
 		<!-- START TABS -->
 		<div class="tabs">
@@ -96,8 +89,6 @@
 			</div>
 		</div>
 		<!-- END TABS -->
-
-
 
 		<p class="lead">
 			Within seconds, your targeted group will have a new list-type property on their user profiles, called "Cohorts".<br>You can now analyze this group throughout the entire Mixpanel reporting UI and your raw data, instead of just in Explore. This also allows you to use Event Triggers with features that don't yet support it (e.g., In-App Messages and A/B Tests).

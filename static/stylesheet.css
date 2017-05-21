@@ -64,6 +64,7 @@ ul.tab li a {
 /*----- Tabs -----*/
 .tabs {
     /*width:100%;*/
+    padding-top: 10px;
     width:65%;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     display:inline-block;
