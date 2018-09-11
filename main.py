@@ -13,16 +13,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
-# import webapp2
-
-# class MainHandler(webapp2.RequestHandler):
-#     def get(self):
-#         self.response.write('Hello world!')
-
-# app = webapp2.WSGIApplication([
-#     ('/', MainHandler)
-# ], debug=True)
 
 # [START app]
 import logging
@@ -41,7 +31,6 @@ def index():
 	url_for('static', filename='img/GitHub_Logo.png')
 	url_for('static', filename='img/Octocat.png')
 	return render_template('index.html')
-	# return "Hello, ladies ;)"
 
 
 @app.errorhandler(500)
@@ -91,7 +80,6 @@ def parse_data():
 	batch = []
 
 	totalUsers = len(userData)
-	# print "Webhook received. %d total users." % totalUsers
 	for user in userData:
 		update = updateTemplate.copy()
 		update["$distinct_id"] = user["$distinct_id"]
